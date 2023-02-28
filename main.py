@@ -9,6 +9,7 @@ home_dir = os.path.expanduser("~")
 # Get the arguments from the command line
 args = sys.argv[1:]
 file_name = None
+arguments = ['--today', '--yesterday']
 
 # display today's notes
 if "--today" in args:
@@ -69,5 +70,7 @@ if not os.path.exists(date):
 os.chdir(date)
 
 # Create/Open a file with the current date
-with open(file_name, "a") as f:
-    f.write(note + "\n")
+for a in arguments:
+    if a not in note:
+        with open(file_name, "a") as f:
+            f.write(note + "\n")
